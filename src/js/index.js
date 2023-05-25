@@ -3,13 +3,22 @@ const body = document.querySelector("body");
 const imagemBotaoTrocaDeTema = document.querySelector(".imagem-botao");
 
 botaoAlterarTema.addEventListener("click", () => {
+  const modoEscuroEstaAtivo = mudarTema();
+
+  mudarImagemBotao(modoEscuroEstaAtivo);
+});
+
+function mudarTema() {
   const modoEscuroEstaAtivo = body.classList.contains("modo-escuro");
 
   body.classList.toggle("modo-escuro");
+  return modoEscuroEstaAtivo;
+}
 
+function mudarImagemBotao(modoEscuroEstaAtivo) {
   if (modoEscuroEstaAtivo) {
     imagemBotaoTrocaDeTema.setAttribute("src", "./src/img/sun.png");
   } else {
     imagemBotaoTrocaDeTema.setAttribute("src", "./src/img/moon.png");
   }
-});
+}
